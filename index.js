@@ -1,13 +1,14 @@
-
-
 const express = require('express'); 
-const { MongoClient } = require('mongodb');
-const ObjectId = require('mongodb').ObjectId;
+const cors = require('cors');
+require('dotenv').config();
 const blog = require('./routers/blogrouter'); 
 const login = require('./routers/loginrouter'); 
 
   
 const app = express(); 
+app.use(cors());
+app.use(express.json());
+
 
   
 app.use(blog); 
