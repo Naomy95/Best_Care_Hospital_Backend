@@ -8,9 +8,14 @@ exports.create = async (req, res) => {
   });
 };
 
+
+
+
 exports.createProfile = (req, res, next) => {
-  // console.log(req.headers['authorization'])
-  const bearerHeader = req.headers["authorization"];
+  const bearerHeader=(req.headers['authorization'])
+//   res.setHeader('Access-Control-Allow-Origin','*')
+//   const bearerHeader = req.body.headers.Authorization;
+  console.log(bearerHeader)
   const bearer = bearerHeader.split(" ");
   const token = bearer[1];
   console.log(token);
