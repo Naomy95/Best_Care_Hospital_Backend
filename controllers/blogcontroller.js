@@ -15,7 +15,15 @@ exports.read = async (req, res) => {
    
         const cursor = blogsCollection.find({});
         const users = await cursor.toArray();
-        
+        res.setHeader('Access-Control-Allow-Origin','*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
         res.send(users);
         
 };
@@ -38,6 +46,15 @@ exports.readID= async (req, res) => {
     const query = {_id:new ObjectId(id)};
     console.log(query)
     const blog = await blogsCollection.findOne(query);
+    res.setHeader('Access-Control-Allow-Origin','*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
     res.send(blog)
     console.log(blog)
 }
@@ -50,6 +67,15 @@ exports.creatComments = async (req, res) => {
     const options = { upsert: true };
     const updateDoc = { $push :{comments:user.comment} };
     const result = await commentsCollection.updateOne(filter, updateDoc, options);
+    res.setHeader('Access-Control-Allow-Origin','*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
     res.json(result);
     } catch(err){
         console.log(err)
@@ -65,6 +91,15 @@ exports.readComments= async (req, res) => {
     const query = {uid:id};
     console.log(query)
     const comments= await commentsCollection.findOne(query);
+    res.setHeader('Access-Control-Allow-Origin','*')
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader('Access-Control-Allow-Credentials', true);
     res.send(comments)
     console.log(comments)
 }
