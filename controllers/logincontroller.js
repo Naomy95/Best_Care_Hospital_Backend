@@ -1,5 +1,11 @@
 const jwt = require("jsonwebtoken");
 const secretKey = "secetKey";
+const cors = require('cors');
+const express = require('express'); 
+
+
+const app =express()
+app.use(cors());
 
 exports.create = async (req, res) => {
   const user = req.body;
@@ -12,6 +18,7 @@ exports.create = async (req, res) => {
 
 
 exports.createProfile = (req, res, next) => {
+  
   const bearerHeader=(req.headers['authorization'])
 //   res.setHeader('Access-Control-Allow-Origin','*')
 //   const bearerHeader = req.body.headers.Authorization;
