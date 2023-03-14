@@ -19,5 +19,5 @@ app.use(login);
   
 app.listen(5000, () => { 
 
-    console.log("listening on http://localhost:5000"); 
+    console.log("listening on :5000"); 
 });
