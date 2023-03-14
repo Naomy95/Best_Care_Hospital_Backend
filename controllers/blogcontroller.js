@@ -1,16 +1,5 @@
 const { MongoClient } = require('mongodb');
 const ObjectId = require('mongodb').ObjectId;            
-const express = require('express'); 
-var bodyParser = require('body-parser')
-const cors = require('cors');
-
-
-
-const app =express()
-app.use(cors());
-
-app.use(express.json())
-app.use(bodyParser.json())
 
 const uri = `mongodb+srv://Hospital_Project:EuqASExlGld6YoTd@cluster0.kvzsn.mongodb.net/?retryWrites=true&w=majority`;
 

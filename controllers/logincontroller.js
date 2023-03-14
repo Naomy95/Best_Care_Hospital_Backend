@@ -1,11 +1,5 @@
 const jwt = require("jsonwebtoken");
 const secretKey = "secetKey";
-const cors = require('cors');
-const express = require('express'); 
-
-
-const app =express()
-app.use(cors());
 
 exports.create = async (req, res) => {
   const user = req.body;
