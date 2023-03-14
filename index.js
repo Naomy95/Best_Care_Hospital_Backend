@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const blog = require('./routers/blogrouter'); 
 const login = require('./routers/loginrouter'); 
+const port=process.env.PORT || 5000  
 
 
 
@@ -19,7 +20,7 @@ app.use(login);
 
 
   
-app.listen(5000, () => { 
+app.listen(port, () => { 
 
-    console.log("listening on :5000"); 
+    console.log(`listening on :${port}`); 
 });
