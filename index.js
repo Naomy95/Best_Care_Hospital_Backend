@@ -12,11 +12,24 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 client.connect();
 
   
+const corsOptions ={
+    origin:'*', 
+    credentials:true,  
+              //access-control-allow-credentials:true
+     methods: [
+                'GET',
+                'POST',
+                'PUT',
+                'DELETE'
+              ],
+    optionSuccessStatus:200
+}
+
 const app = express(); 
 
-app.use(cors({
-    origin: '*'
-}));
+app.use(cors(
+   corsOptions
+));
 app.use(express.json());
 
 
