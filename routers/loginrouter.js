@@ -3,8 +3,6 @@ const {create,createProfile}=require('../controllers/logincontroller')
 const app = Router(); 
 
 
-app.use(Router.json());
-
 
 app.post('/login', create)
 

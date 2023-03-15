@@ -3,8 +3,6 @@ const {read,create,readID,creatComments,readComments}=require('../controllers/bl
 const app = Router(); 
 
 
-app.use(Router.json());
-
 app.get('/', read)
 app.post('/blogs', create)
 app.get('/blogs/:blogID', readID)
