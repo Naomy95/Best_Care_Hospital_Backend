@@ -46,37 +46,22 @@ exports.readID= async (req, res) => {
     const query = {_id:new ObjectId(id)};
     console.log(query)
     const blog = await blogsCollection.findOne(query);
-    res.setHeader('Access-Control-Allow-Origin','*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
     res.send(blog)
     console.log(blog)
 }
 
 exports.creatComments = async (req, res) => { 
     try {
-        console.log(req.body)
-        const user = req.body;
-    const filter = { uid: user.uid };
+    const id = req.body.uid;
+    const filter ={_id:new ObjectId(id)}
     const options = { upsert: true };
-    const updateDoc = { $push :{comments:user.comment} };
-    const result = await commentsCollection.updateOne(filter, updateDoc, options);
-    res.setHeader('Access-Control-Allow-Origin','*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
-    res.json(result);
+    const updateDoc = { $push :{comments:req.body.comment} };
+    const result = await blogsCollection.updateOne(filter, updateDoc, options);
+    // const result = await blogsCollection.findOne({
+    //  );
+    res.json(result)
+    console.log(result)
+ 
     } catch(err){
         console.log(err)
         res.status(400).json({
