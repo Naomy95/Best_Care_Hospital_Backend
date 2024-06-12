@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const blog = require('./routers/blogrouter'); 
 const login = require('./routers/loginrouter'); 
+const appointment= require('./routers/appointmentRouter')
 const port=process.env.PORT || 5000  
 const { MongoClient } = require('mongodb');
 
@@ -10,6 +11,7 @@ const uri = `mongodb+srv://Hospital_Project:EuqASExlGld6YoTd@cluster0.kvzsn.mong
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect();
+
 
   
 const corsOptions ={
@@ -36,6 +38,7 @@ app.use(express.json());
   
 app.use(blog); 
 app.use(login); 
+app.use(appointment)
 
 
 
